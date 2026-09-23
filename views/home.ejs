@@ -2,6 +2,7 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Trang chủ</title>
   <link rel="stylesheet" href="/css/style.css">
 </head>
@@ -9,15 +10,30 @@
   <nav>
     <a href="/">Trang chủ</a>
     <a href="/news">Tin tức</a>
-    <a href="/news/add">Thêm bài viết</a>
+    <% if (user) { %>
+      <span>Xin chào, <%= user.username %></span>
+      <a href="/logout">Đăng xuất</a>
+    <% } else { %>
+      <a href="/login">Đăng nhập</a>
+    <% } %>
   </nav>
 
-  <h1>Mini Website Tin Tức</h1>
-  <p>Website sử dụng Express, EJS và MySQL.</p>
+  <main class="container">
+    <h1>Mini Website Tin Tức</h1>
+    <div class="card">
+      <p>Website sử dụng Express, EJS và MySQL local.</p>
+      <p>Lab 9: GET, POST, params, query, body, CRUD và session.</p>
+    </div>
 
-  <form method="GET" action="/news/search">
-    <input type="text" name="keyword" placeholder="Nhập từ khóa">
-    <button type="submit">Tìm kiếm</button>
-  </form>
+    <form class="search-form" method="GET" action="/news/search">
+      <input type="text" name="keyword" placeholder="Nhập từ khóa">
+      <button type="submit">Tìm kiếm</button>
+    </form>
+
+    <a class="button" href="/news">Xem tin tức</a>
+    <% if (user) { %>
+      <a class="button" href="/news/add">Thêm bài viết</a>
+    <% } %>
+  </main>
 </body>
 </html>
