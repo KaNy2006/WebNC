@@ -2,6 +2,7 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><%= post.title %></title>
   <link rel="stylesheet" href="/css/style.css">
 </head>
@@ -9,11 +10,20 @@
   <nav>
     <a href="/">Trang chủ</a>
     <a href="/news">Tin tức</a>
+    <% if (user) { %>
+      <span>Xin chào, <%= user.username %></span>
+      <a href="/logout">Đăng xuất</a>
+    <% } else { %>
+      <a href="/login">Đăng nhập</a>
+    <% } %>
   </nav>
 
-  <h1><%= post.title %></h1>
-  <p><%= post.description %></p>
-
-  <a href="/news/<%= post.id %>/edit">Sửa bài viết</a>
+  <main class="container">
+    <div class="card">
+      <h1><%= post.title %></h1>
+      <p><%= post.description %></p>
+      <a class="button" href="/news">Quay lại</a>
+    </div>
+  </main>
 </body>
 </html>
