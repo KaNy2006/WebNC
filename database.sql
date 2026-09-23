@@ -24,10 +24,8 @@ WHERE NOT EXISTS (
   SELECT 1 FROM users WHERE username = 'admin'
 );
 
-INSERT INTO posts (title, description)
-SELECT 'Bài viết mẫu 1', 'Đây là dữ liệu mẫu để kiểm tra website Express và MySQL.'
-WHERE NOT EXISTS (SELECT 1 FROM posts);
-
-INSERT INTO posts (title, description)
-SELECT 'Bài viết mẫu 2', 'Bạn có thể đăng nhập để thêm, sửa và xóa bài viết.'
-WHERE (SELECT COUNT(*) FROM posts) = 1;
+INSERT INTO posts(title, description)
+VALUES
+('NodeJS', 'Lập trình backend với Node.js thuần'),
+('Web động', 'Server trả về nội dung tương ứng với request'),
+('React', 'Lập trình giao diện frontend với React');
